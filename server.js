@@ -14,7 +14,7 @@ connection.connect(function(err){
     startApp();
 });
 
-function startApp (){
+function startApp(){
     inquirer.prompt({
         name:"action",
         type:"list",
@@ -64,3 +64,32 @@ function startApp (){
         }
     })
 }
+
+//Function for viewing all departments
+function viewAllDepartments(){
+    let query = "SELECT * FROM department";
+    connection.query (query, function (err, res){
+        console.table(`DEPARTMENTS:`)
+        res.forEach(department => {
+            console.table (`ID: ${department.id} | Name: ${department.name}`)            
+        }) 
+      
+    });
+    startApp();     
+};
+
+//Function for adding a department
+function addDeparment(){
+    inquirer.prompt({
+        name: "deparment",
+        type: "input",
+        message: "What is the name of the department you want to add?",
+        })
+    .then(function(prompt){
+        let query = "INSERT INTO department (name) VALUES ( ? )"
+        connection.query(query, prompt.deparment, function(err,res){
+            console.log(`You have added: ${prompt.department}`)
+        })
+    viewAllDepartments();    
+    });    
+};
