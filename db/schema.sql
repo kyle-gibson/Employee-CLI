@@ -1,6 +1,6 @@
 CREATE DATABASE employee_cli;
 
-USE employee_cli; 
+USE employee_cli;
 
 CREATE TABLE department (
     id INT AUTO_INCREMENT, 
