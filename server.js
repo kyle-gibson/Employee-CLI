@@ -82,7 +82,7 @@ function viewAllDepartments(){
 function viewAllRoles(){
     let query="SELECT * FROM role";
     connection.query (query, function(err, res){
-        console.table('ROLES:')
+        console.table(`ROLES:`)
         res.forEach(role => {
             console.table (`ID: ${role.id} | Name: ${role.name}`)
         })
@@ -92,7 +92,15 @@ function viewAllRoles(){
 };
 
 //Function for viewing all employees
-
+function viewAllEmployees(){
+    let query="SELECT * FROM employee";
+    connection.query (query, function(err, res){
+        console.table(`EMPLOYEES:`)
+        res.forEach(role => {
+            console.table(`ID: ${employee.id} | Name: ${employee.name}`)
+        })
+    })
+};
 
 //Function for adding a department
 function addDeparment(){
