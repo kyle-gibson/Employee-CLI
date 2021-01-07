@@ -72,8 +72,7 @@ function viewAllDepartments(){
         console.table(`DEPARTMENTS:`)
         res.forEach(department => {
             console.table (`ID: ${department.id} | Name: ${department.name}`)            
-        }) 
-      
+        })       
     });
     startApp();     
 };
@@ -85,8 +84,7 @@ function viewAllRoles(){
         console.table(`ROLES:`)
         res.forEach(role => {
             console.table (`ID: ${role.id} | Name: ${role.name}`)
-        })
-
+        });
     });
     startApp();
 };
@@ -98,8 +96,8 @@ function viewAllEmployees(){
         console.table(`EMPLOYEES:`)
         res.forEach(role => {
             console.table(`ID: ${employee.id} | Name: ${employee.name}`)
-        })
-    })
+        });
+    });
 };
 
 //Function for adding a department
@@ -113,7 +111,7 @@ function addDeparment(){
         let query = "INSERT INTO department (name) VALUES ( ? )"
         connection.query(query, prompt.deparment, function(err,res){
             console.log(`You have added: ${prompt.department}`)
-        })
+        });
     viewAllDepartments();    
     });    
 };
@@ -148,4 +146,20 @@ function addEmployee(){
         });
     viewAllEmployees();
     });    
+};
+
+//Function for updating Employee roles
+function updateEmployeeRole(){
+    inquirer.prompt({
+        name:"update role",
+        type:"input",
+        message:"What would you like to update this employee's role to?",
+        })
+    .then(function(prompt){
+        let query= "INSERT INTO role (name) VALUES (?)"
+        connection.query(query, prompt.role, function(err, res){
+            console.log(`You have successfully updated ${employee.name} role to: ${prompt.role}`)
+        });
+    viewAllRoles();    
+    }); 
 };
