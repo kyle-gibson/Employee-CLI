@@ -119,5 +119,19 @@ function addDeparment(){
 };
 
 //Function for adding a role
+function addRole(){
+    inquirer.prompt({
+        name:"role",
+        type: "inpuit",
+        message:"What role would you like to add?",
+        })
+    .then(function(prompt){
+        let query= "INSERT INTO role (name) VALUES (?)"
+        connection.query(query, prompt.role, function(err, res){
+            console.log(`You have added: ${prompt.role}`)
+        }); 
+    viewAllRoles();
+    });
+};
 
 //Function for adding an employee
