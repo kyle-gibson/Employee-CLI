@@ -78,6 +78,22 @@ function viewAllDepartments(){
     startApp();     
 };
 
+//Function for viewing all roles
+function viewAllRoles(){
+    let query="SELECT * FROM role";
+    connection.query (query, function(err, res){
+        console.table('ROLES:')
+        res.forEach(role => {
+            console.table (`ID: ${role.id} | Name: ${role.name}`)
+        })
+
+    });
+    startApp();
+};
+
+//Function for viewing all employees
+
+
 //Function for adding a department
 function addDeparment(){
     inquirer.prompt({
@@ -93,3 +109,7 @@ function addDeparment(){
     viewAllDepartments();    
     });    
 };
+
+//Function for adding a role
+
+//Function for adding an employee
