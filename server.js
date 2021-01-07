@@ -135,3 +135,17 @@ function addRole(){
 };
 
 //Function for adding an employee
+function addEmployee(){
+    inquirer.prompt({
+        name:"employee",
+        type:"input",
+        message:"What is the name of the employee you would like to add?",
+        })
+    .then(function(prompt){
+        let query= "INSERT INTO employee (name) VALUES (?)"
+        connection.query(query, prompt.role, function(err, res){
+            console.log(`You have added: ${prompt.employee}`)
+        });
+    viewAllEmployees();
+    });    
+};
